@@ -1,0 +1,21 @@
+// 文本单行显示
+no-wrap() {
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap
+}
+
+
+// 文本多行显示
+no-wrap-line(line) {
+  display: -webkit-box
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: line
+  overflow: hidden
+}
+
+// flex元素宽度
+flex-item(width) {
+  flex: 0 0 width
+  width: width
+}
