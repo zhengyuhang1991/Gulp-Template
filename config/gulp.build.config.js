@@ -71,13 +71,11 @@ function production() {
         replaceReved: true,
         dirReplacements: {
           'styles': 'styles',
-          'scripts': 'scripts',
-          'imgs': 'imgs'
+          'scripts': 'scripts'
         }
       }))
       .pipe(htmlmin({
-        empty: true,
-        spare: true
+        collapseWhitespace: true
       }))
       .pipe(gulp.dest('dist'))
   })
