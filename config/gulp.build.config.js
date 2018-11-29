@@ -5,7 +5,6 @@ const cssmin = require('gulp-clean-css')
 const autoprefixer = require('gulp-autoprefixer')
 const uglify = require('gulp-uglify')
 const babel = require('gulp-babel')
-const imagemin = require('gulp-imagemin')
 const del = require('del')
 const gulpSequence = require('gulp-sequence')
 const htmlmin = require('gulp-htmlmin')
@@ -27,12 +26,6 @@ function production() {
       'dev/imgs/*',
       'dev/imgs/**/*'
     ])
-      .pipe(imagemin({
-        optimizationLevel: 5,
-        progressive: true,
-        interlaced: true,
-        multipass: true
-      }))
       .pipe(rev())
       .pipe(gulp.dest(destImages))
       .pipe(rev.manifest())
@@ -86,7 +79,7 @@ function production() {
   })
 
   // 生成生产环境文件
-  gulp.task('build', gulpSequence('clean', ['styles', 'scripts', 'imgOptimize'], 'rev'))
+  gulp.task('build', gulpSequence('clean', 'imgOptimize', ['styles', 'scripts'], 'rev'))
 }
 
 module.exports = production

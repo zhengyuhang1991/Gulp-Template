@@ -7,7 +7,6 @@ const reload = browserSync.reload
 const changed = require('gulp-changed')
 const gulpSequence = require('gulp-sequence')
 const htmlmin = require('gulp-htmlmin')
-const imagemin = require('gulp-imagemin')
 
 let destImages = 'dist/imgs'
 let destStylus = 'dist/styles'
@@ -38,14 +37,6 @@ function development() {
       'dev/imgs/**/*'
     ])
       .pipe(changed(destImages))
-      .pipe(imagemin({
-        optimizationLevel: 5,
-        progressive: true,
-        interlaced: true,
-        multipass: true,
-        svgoPlugins: [{removeViewBox: false}],
-        use: [pngquant()]
-      }))
       .pipe(gulp.dest(destImages)
       )
   })

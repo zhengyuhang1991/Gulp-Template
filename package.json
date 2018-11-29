@@ -22,7 +22,6 @@
     "gulp-babel": "^7.0.0",
     "gulp-changed": "^3.2.0",
     "gulp-clean-css": "^3.8.0",
-    "gulp-imagemin": "^4.1.0",
     "gulp-sequence": "^1.0.0",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-stylus": "^2.7.0",
