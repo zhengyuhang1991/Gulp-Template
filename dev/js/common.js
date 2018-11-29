@@ -1,8 +1,8 @@
 let commonJs = {
-  init() {
+  init () {
     this.setEvent()
   },
-  setEvent() {
+  setEvent () {
     // Mobile
     FastClick.attach(document.body)
     // Mobile End

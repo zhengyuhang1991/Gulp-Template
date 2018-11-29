@@ -12,15 +12,16 @@ const htmlmin = require('gulp-htmlmin')
 const rev = require('gulp-revm')
 const revCollector = require('gulp-revm-collector')
 
-let destImages = 'dist/imgs'
 let destStylus = 'dist/styles'
 let destScripts = 'dist/scripts'
+let destImages = 'dist/imgs'
 
 let revCss = 'rev/css'
 let revJs = 'rev/js'
+let revImgs = 'rev/imgs'
 
+// 生产环境
 function production() {
-  // 生产环境
   gulp.task('imgOptimize', function () {
     gulp.src([
       'dev/imgs/*',
@@ -32,8 +33,10 @@ function production() {
         interlaced: true,
         multipass: true
       }))
-      .pipe(gulp.dest(destImages)
-      )
+      .pipe(rev())
+      .pipe(gulp.dest(destImages))
+      .pipe(rev.manifest())
+      .pipe(gulp.dest(revImgs))
   })
   gulp.task('styles', function () {
     return gulp.src('dev/stylus/*.styl')
@@ -42,10 +45,6 @@ function production() {
       .pipe(cssmin({
         keepSpecialComments: '*'
       }))
-      .pipe(gulp.dest(destStylus))
-  })
-  gulp.task('revStyles', function () {
-    return gulp.src('dist/styles/*.css')
       .pipe(rev())
       .pipe(gulp.dest(destStylus))
       .pipe(rev.manifest())
@@ -71,7 +70,8 @@ function production() {
         replaceReved: true,
         dirReplacements: {
           'styles': 'styles',
-          'scripts': 'scripts'
+          'scripts': 'scripts',
+          'imgs': 'imgs'
         }
       }))
       .pipe(htmlmin({
@@ -86,7 +86,7 @@ function production() {
   })
 
   // 生成生产环境文件
-  gulp.task('build', gulpSequence('clean', ['styles', 'scripts', 'imgOptimize'], 'revStyles', 'rev'))
+  gulp.task('build', gulpSequence('clean', ['styles', 'scripts', 'imgOptimize'], 'rev'))
 }
 
 module.exports = production

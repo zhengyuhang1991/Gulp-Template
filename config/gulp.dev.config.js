@@ -13,6 +13,7 @@ let destImages = 'dist/imgs'
 let destStylus = 'dist/styles'
 let destScripts = 'dist/scripts'
 
+// 开发环境
 function development() {
   // 热刷新服务
   gulp.task('serve', function () {
@@ -31,7 +32,6 @@ function development() {
     gulp.watch(['dev/imgs/*', 'dev/imgs/**/*'], ['imgOptimize'])
   })
 
-  // 开发环境
   gulp.task('imgOptimize', function () {
     gulp.src([
       'dev/imgs/*',

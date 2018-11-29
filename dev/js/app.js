@@ -1,4 +1,5 @@
 let appJs = {
-  init() {}
+  init () {
+  }
 }
 appJs.init()

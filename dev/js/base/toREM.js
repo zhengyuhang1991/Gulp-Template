@@ -4,7 +4,7 @@
   let toRem = PSDWidth / 100
   let fs
 
-  function HTMLfontSize() {
+  function HTMLfontSize () {
     let html = document.documentElement
     let screenWidth = window.innerWidth
 
