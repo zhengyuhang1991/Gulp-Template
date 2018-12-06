@@ -1,5 +1,7 @@
-let appJs = {
-  init () {
+(function () {
+  let appJs = {
+    init () {
+    }
   }
-}
-appJs.init()
+  appJs.init()
+})()
