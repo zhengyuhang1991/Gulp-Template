@@ -1,6 +1,6 @@
 // Load plugins
 const gulp = require('gulp')
-const stylus = require('gulp-stylus')
+const scss = require('gulp-sass')
 const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync')
 const reload = browserSync.reload
@@ -9,7 +9,7 @@ const gulpSequence = require('gulp-sequence')
 const htmlmin = require('gulp-htmlmin')
 
 let destImages = 'dist/imgs'
-let destStylus = 'dist/styles'
+let destStyles = 'dist/styles'
 let destScripts = 'dist/scripts'
 
 // 开发环境
@@ -25,7 +25,7 @@ function development() {
   })
   // 文件检查
   gulp.task('watch', function () {
-    gulp.watch(['dev/stylus/*', 'dev/stylus/**/*'], ['devStyles'])
+    gulp.watch(['dev/styles/*', 'dev/styles/**/*'], ['devStyles'])
     gulp.watch(['dev/js/*', 'dev/js/**/*'], ['devScripts'])
     gulp.watch(['dev/*.html', 'dev/pages/*.html'], ['htmlMin'])
     gulp.watch(['dev/imgs/*', 'dev/imgs/**/*'], ['imgOptimize'])
@@ -41,12 +41,12 @@ function development() {
       )
   })
   gulp.task('devStyles', function () {
-    return gulp.src('dev/stylus/*.styl')
-      .pipe(changed(destStylus))
+    return gulp.src('dev/styles/*.scss')
+      .pipe(changed(destStyles))
       .pipe(sourcemaps.init())
-      .pipe(stylus())
+      .pipe(scss())
       .pipe(sourcemaps.write("maps"))
-      .pipe(gulp.dest(destStylus))
+      .pipe(gulp.dest(destStyles))
   })
   gulp.task('devScripts', function () {
     gulp.src([

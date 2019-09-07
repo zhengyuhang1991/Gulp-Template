@@ -1,6 +1,6 @@
 // Load plugins
 const gulp = require('gulp')
-const stylus = require('gulp-stylus')
+const scss = require('gulp-sass')
 const cssmin = require('gulp-clean-css')
 const autoprefixer = require('gulp-autoprefixer')
 const uglify = require('gulp-uglify')
@@ -11,7 +11,7 @@ const htmlmin = require('gulp-htmlmin')
 const rev = require('gulp-revm')
 const revCollector = require('gulp-revm-collector')
 
-let destStylus = 'dist/styles'
+let destStyles = 'dist/styles'
 let destScripts = 'dist/scripts'
 let destImages = 'dist/imgs'
 
@@ -32,14 +32,14 @@ function production() {
       .pipe(gulp.dest(revImgs))
   })
   gulp.task('styles', function () {
-    return gulp.src('dev/stylus/*.styl')
-      .pipe(stylus())
+    return gulp.src('dev/styles/*.scss')
+      .pipe(scss())
       .pipe(autoprefixer())
       .pipe(cssmin({
         keepSpecialComments: '*'
       }))
       .pipe(rev())
-      .pipe(gulp.dest(destStylus))
+      .pipe(gulp.dest(destStyles))
       .pipe(rev.manifest())
       .pipe(gulp.dest(revCss))
   })

@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 14px / 1.42858 '微软雅黑', 'Microsoft Yahei', sans-serif;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, input, select, textarea, p, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+em, i, th {
+  font-style: normal;
+  font-weight: 500;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-size: 100%;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input {
+  &::-ms-clear {
+    display: none;
+  }
+  &::-webkit-input-placeholder {
+    color: $color-disabled;
+  }
+  &:-moz-placeholder {
+    color: $color-disabled;
+  }
+  &::-moz-placeholder {
+    color: $color-disabled;
+  }
+  &:-ms-input-placeholder {
+    color: $color-disabled;
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+::-webkit-search-cancel-button {
+  display: none;
+}
